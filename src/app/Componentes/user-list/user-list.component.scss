@@ -1,0 +1,313 @@
+.vendor-breakdown {
+    margin: 0px 10px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 5px 0px;
+    font-size: small;
+
+    .topContainer {
+        display: flex;
+        align-items: flex-start;
+        margin: 5px 10px;
+        justify-content: space-between;
+
+        .left {
+            display: flex;
+            align-items: center;
+            margin: 5px 10px;
+        
+            img {
+                
+            }
+            .topsubContainer {
+                margin-left: 14px;
+                display: flex;
+                align-items: center;
+            
+                .userCount {
+                    margin: 0px 15px;
+                    border: 1px solid;
+                    border-radius: 22px;
+                    padding: 10px;
+                    font-size: 12px;
+                    font-weight: bold;
+                    color: #ac54ed;
+                    background-color: #eed6ff;
+                }
+            }
+        }
+        .right {
+          display: flex;
+            .dots-menu {
+                font-size: 24px;
+                cursor: pointer;
+                color: #333;
+              }
+        }
+    }
+
+    .midContainer {
+        padding: 20px;
+        border: 1px solid #ddd;
+        // border-radius: 20px;
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        
+            th {
+              text-align: left;
+              padding: 12px 16px;
+              color: #666;
+              font-weight: 500;
+              border-bottom: 1px solid #eee;
+              font-weight: bold;
+
+              .queSign {
+                display: inline;
+                border: 1px solid #938e8e;
+                border-radius: 54px;
+                padding: 1px 4px;
+                color: #938e8e;
+              }
+              input[type="checkbox" i] { 
+                width: 21px;
+                height: 21px;
+                padding: 0px;
+              }
+            }
+        
+            td {
+              padding: 16px;
+              border-bottom: 1px solid #eee;
+
+              input[type="checkbox" i] { 
+                width: 21px;
+                height: 21px;
+                padding: 0px;
+              }
+              .handle {
+                display: block;
+                color: #666;
+                font-size: 12px;
+                margin-top: 4px;
+              }
+              
+              .progressContainer {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                .progress-bar {
+                  background: #f0f0f0;
+                  height: 12px;
+                  border-radius: 12px;
+                  position: relative;
+                  width: 150px;
+                  
+                  .progress {
+                    background: #3e00d3c9;
+                    height: 100%;
+                    width: 61px;
+                    border-radius: 14px;
+                  }
+                  
+                  span {
+                    position: absolute;
+                    left: 8px;
+                    top: 2px;
+                    color: white;
+                    font-size: 12px;
+                  }
+                }
+              }
+                
+              .teams {
+                display: flex;
+                // flex-wrap: wrap;
+                gap: 4px;
+                
+                .teamsContainer {
+                  // border: 1px solid black;
+                  padding: 6px 10px;
+                  border-radius: 14px;
+                  // color: red;
+                }
+              }
+              .statusContainer {
+                border: 1px solid #09dd09;
+                border-radius: 30px;
+                padding: 7px;
+                display: flex;
+                align-items: center;
+                background-color: #e2ffe2;
+                justify-content: space-around;
+
+                .dot {
+                  border: 5px solid green;
+                  border-radius: 50px;
+                  display: inline;
+                }
+                .subStatusContainer {
+                  margin: 0px 5px;
+                }
+              }
+              .statusContainer {
+                transition: all 1s ease-in-out;
+              }
+              
+              .statusContainer:hover {
+                background-color: #3a8d3a;
+                color: #fff;
+                border-color: #2e7d32;
+              }
+              .actionButton {
+                display: flex;
+                justify-content:space-between;
+                align-items: center;
+              }
+            }
+            .profileContainer {
+              display: flex;
+              align-items: center;
+              .userImage {
+                width: 50px;
+                height: 50px;
+                border: 1px solid black;
+                border-radius: 50px;
+              }
+
+              .nameContainer{
+                display: flex;
+                flex-direction: column;
+                margin: 0px 8px;
+
+                .nameText {
+                  padding: 2px;
+                }
+                .tag {
+                  color: #666;
+                }
+              }
+            }
+          }
+    }
+    .lastContainer {
+        margin: 5px 10px;
+        display: flex;
+        // justify-content: end;
+
+        .pagination {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-top: 20px;
+            gap: 8px;
+        
+            button {
+              padding: 6px 12px;
+              border: 1px solid #ddd;
+              background: white;
+              border-radius: 4px;
+              cursor: pointer;
+              color: black;
+        
+              &.active {
+                background: #3a7bd5;
+                color: rgb(0, 0, 0);
+                border-color: #3a7bd5;
+              }
+            }
+          }
+    }
+}
+.popup {
+  position: absolute;
+  background: white;
+  color: black;
+  padding: 10px;
+  border: 6px solid #ccc;
+  z-index: 1000;
+  top: 12%;
+  left: 40%;
+
+  .buttonContainer {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 400px;
+  max-width: 90%;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.button-group {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.btn {
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  border: none;
+}
+
+.btn.cancel {
+  background: #f0f0f0;
+}
+
+.btn.save {
+  background: #4CAF50;
+  color: white;
+}
+
+.btn.delete {
+  background: #f44336;
+  color: white;
+}
+
+.add-button {
+  background: #3f51b5;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 15px;
+}

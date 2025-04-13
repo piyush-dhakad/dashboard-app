@@ -1,0 +1,152 @@
+
+
+  <div class="vendor-breakdown">
+    <div class="topContainer">
+        <div class="left">
+            <div class="topsubContainer">
+                <h2>Team members</h2>
+                <p class="userCount">{{users.length}} users</p>
+            </div>
+        </div>
+        <div class="right">
+            <button class="add-button" (click)="openAddPopup()">+ Add User</button>
+            <div class="threeDotes">
+                <div class="dots-menu">⋮</div>
+            </div>
+        </div>
+    </div>
+  
+    <div class="midContainer">
+        <table>
+          <thead>
+            <tr>
+              <th>
+                  <input type="checkbox" class="topCheckbox"
+                  [(ngModel)]="allCheck" 
+                    (click)="onCheckBoxClick()"/>
+              </th>
+              <th *ngFor="let column of columnsList" > {{column.column_name}}                   
+                <div class="queSign" *ngIf="column.column_key === 'role'">
+                ?
+                </div>
+              </th>
+              <th></th>
+              <!-- <th>Status</th>
+              <th>Role</th>
+              <th>License use</th>
+              <th>Teams</th> -->
+            </tr>
+          </thead>            <tbody>
+              <tr *ngFor="let user of users; let i = index">
+                <td>
+                  <input type="checkbox" (click)="singleCheck()" [checked]="allCheck" />
+              </td>
+              <td class="profileContainer">
+                <img class="userImage" src="../../../assets/images/images.png" alt="user-image" />
+                <div class="nameContainer">
+                  <strong class="nameText">{{user.name.first_name}} {{user.name.last_name}}</strong>
+                  <span class="nameText tag">{{user.name.handle}}</span>
+                </div>
+              </td>
+              <td> 
+                <div class="statusContainer">
+                  <div class="dot"></div>
+                  <div class="subStatusContainer">
+                    {{user.status}}
+                  </div>
+                </div>
+              </td>
+              <td>
+                {{user.role}} 
+              </td>
+              <td>
+                <div class="progressContainer">
+                  <div class="progress-bar">
+                    <div class="progress" [style.width]="user.license_used+'%'"></div>
+                  </div>
+                  <span>{{user.license_used }}%</span>
+                </div>
+              </td>
+              <td>
+                <div class="teams">
+                  <div class="teamsContainer" *ngFor="let team of user.teams" 
+                  [ngStyle]="{ color: team.text_color, background: team.background_color, border: '1px solid ' + team.text_color }">
+                    <span  class="team-tag">{{team.value}}</span>
+                  </div>
+                </div>
+              </td>
+              <td>
+              <td>
+                  <div class="actionButton">
+                    <div (click)="openDeletePopup(user, i)">
+                      <i class="material-icons">delete</i> 
+                    </div>
+                    <div (click)="openEditPopup(user, i)">
+                      <i class="material-icons">edit</i> 
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="popup-overlay" *ngIf="showAddPopup">
+        <div class="popup">
+            <h3>Add New User</h3>
+            <div class="form-group">
+                <label>First Name</label>
+                <input [(ngModel)]="newUser.name.first_name" />
+            </div>
+            <div class="form-group">
+                <label>Last Name</label>
+                <input [(ngModel)]="newUser.name.last_name" name="firstName" />
+            </div>
+            <div class="form-group">
+              <label>Handle</label>
+              <input [(ngModel)]="newUser.name.handle" name="Handle" />
+            </div>
+            <div class="form-group">
+              <label>Status</label>
+              <input [(ngModel)]="newUser.status" name="status" />
+            </div>
+            <div class="form-group">
+              <label>Role</label>
+              <input [(ngModel)]="newUser.role" name="Role" />
+            </div>
+            <div class="form-group">
+              <label>License used</label>
+              <input [(ngModel)]="newUser.license_used" name="License used" />
+            </div>
+            <div class="button-group">
+                <button class="btn cancel" (click)="cancelOperation()">Cancel</button>
+                <button class="btn save" (click)="addUser()">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="popup-overlay" *ngIf="showEditPopup && currentUser">
+        <div class="popup">
+            <h3>Edit User</h3>
+            <div class="form-group">
+                <label>First Name</label>
+                <input [(ngModel)]="currentUser.name.first_name" />
+            </div>
+            <div class="button-group">
+                <button class="btn cancel" (click)="cancelOperation()">Cancel</button>
+                <button class="btn save" (click)="updateUser()">Update</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="popup-overlay" *ngIf="showDeletePopup && currentUser">
+        <div class="popup">
+            <h3>Confirm Delete</h3>
+            <p>Are you sure you want to delete {{currentUser.name.first_name}} {{currentUser.name.last_name}}?</p>
+            <div class="button-group">
+                <button class="btn cancel" (click)="cancelOperation()">Cancel</button>
+                <button class="btn delete" (click)="confirmDelete()">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
